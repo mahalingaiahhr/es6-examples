@@ -16,7 +16,7 @@ console.log(last); //baz
 
 //And we can capture all trailing items in an array with a “rest” pattern:
 var [head, ...tail] = [1, 2, 3, 4];
-console.log(tail);		// [2, 3, 4]
+console.log("Tail destructuring - "+tail);		// [2, 3, 4]
 
 //undefined when array that are out of bounds or don’t exist
 var [missing] = [];
@@ -31,7 +31,7 @@ var a = 1;
 var b = 3;
 
 [a, b] = [b, a];
-console.log(`Swapping a=${a}, b=${b}`);
+console.log(`Swapping 1,3 a=${a}, b=${b}`);
 
 //Function returning multiple values
 function samFunction() {
@@ -51,7 +51,7 @@ console.log(foo+", "+bar); // "lorem, ipsum"
 
 //Assigning property to different variable
 var {foo:x, bar:y} = obj;
-console.log(x+", "+y); // "lorem, ipsum"
+console.log(`${x}, ${y}`); // "lorem, ipsum"
 
 
 //nested assignment

@@ -1,9 +1,9 @@
-console.log("a  before = "+a);
+console.log("a  before declaration: "+a);
 if (true) {
 	var c = 30;
 }
 var a = 20; 
-console.log("a after= "+a);
+console.log("a after declaration: "+a);
 console.log("c = "+c); 
 
 

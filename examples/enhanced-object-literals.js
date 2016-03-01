@@ -48,8 +48,8 @@ function makeCar(make, model, value) {
 var car = makeCar('Kia', 'Sorento', 40000);
 
 console.log(JSON.stringify(car));
-console.log(car.name); //inherited from __proto
-console.log(car.getModel());
+console.log("Car.name: "+car.name); //inherited from __proto__
+console.log("Car.getModel: "+car.getModel());
 
 car.depreciate();
 car.appreciate();

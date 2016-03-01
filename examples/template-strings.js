@@ -1,6 +1,8 @@
 'use strict';
 
 var user = 'Jane';
+
+//Multine strings. indents will appear as is.
 var str = `Hello ${user }!
 	How are you
 doing?`;

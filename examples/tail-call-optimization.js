@@ -14,24 +14,24 @@ function add(a,b){
 
 function sumTwoNumbers(a,b){
 	var a=1, b=2;
-	return add(a,b); //Taill call optmized
+	return add(a,b); //Tail call optmized
 }
 
 
 function sumTwoNumbers(a,b){
 	var a=1, b=2;
 	var sum = add(a,b); 
-	return sum; //Taill call not optmized
+	return sum; //Tail call not optmized
 }
 
 function sumTwoNumbers(a,b){
 	var a=1, b=2;
-	add(a,b); //Taill call not optmized, because implicit return undefined
+	add(a,b); //Tail call not optmized, because implicit return undefined
 }
 
 function sumTwoNumbers(a,b){
 	var a=1, b=2;
-	return a+ add(b,b); //Taill call not optmized
+	return a+ add(b,b); //Tail call not optmized due to addition operation after function call
 }
 
 function addOne(a){
@@ -39,5 +39,5 @@ function addOne(a){
   function inner(b){
     return b + one;
   }
-  return inner(a); //Taill call not optmized, because inner needs outer a
+  return inner(a); //Tail call not optmized, because inner needs outer a
 }
