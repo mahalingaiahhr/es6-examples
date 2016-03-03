@@ -1,98 +1,97 @@
+// Not supported in Chrome yet
+
+'use strict';
 var someArray = [1, 2, 3];
 
-//In ES5
-var first = someArray[0];
-var second = someArray[1];
+// In ES5
+var fir = someArray[0];
+var secd = someArray[1];
 var third = someArray[2];
 
-//In ES6
-var [f, s, t]= someArray;
+// In ES6
+var [f, s, t] = someArray;
 
 console.log(`f=${f}, s=${s}, t=${t}`);
 
-//We can skip some items
-var [,,last] = ["foo", "bar", "baz"];
-console.log(last); //baz
+// We can skip some items
+var [, , last] = ['foo', 'bar', 'baz'];
+console.log('After skipping First two in [foo, bar, baz] -> ' + last); // baz
 
-//And we can capture all trailing items in an array with a “rest” pattern:
+// And we can capture all trailing items in an array with a rest pattern:
 var [head, ...tail] = [1, 2, 3, 4];
-console.log("Tail destructuring - "+tail);		// [2, 3, 4]
+console.log('Tail destructuring - ' + tail);		//  [2, 3, 4]
 
-//undefined when array that are out of bounds or don’t exist
+// undefined when array that are out of bounds or don't exist
 var [missing] = [];
-console.log("missing= "+missing); // undefined
+console.log('missing= ' + missing); //  undefined
 
 // We can capture nested properties too.
 var [foo, [[bar], baz]] = [1, [[2], 3]];
-console.log(`foo=${foo}, bar=${bar}, baz=${baz}`);
+console.log(`[foo, [[bar], baz]] = [1, [[2], 3]] -> foo=${foo}, bar=${bar}, baz=${baz}`);
 
 // Swapping variables;
-var a = 1;
-var b = 3;
+var x = 1;
+var y = 3;
+[x, y] = [y, x];
+console.log(`Swapping 1,3 x=${x}, y=${y}`);
 
-[a, b] = [b, a];
-console.log(`Swapping 1,3 a=${a}, b=${b}`);
-
-//Function returning multiple values
+// Functon returning multiple values
 function samFunction() {
-	var a =10;
-	var b = 20;
-	var c= 30;
-	return [a, b, c];
+    var a = 10;
+    var b = 20;
+    var c = 30;
+    return [a, b, c];
 }
 var [a, b, c] = samFunction();
-console.log(`a=${a}, b=${b}, c=${c}`);
-
-//Destructuring objects
-
-var obj = { foo: "lorem", bar: "ipsum" };
-var { foo, bar } = obj;
-console.log(foo+", "+bar); // "lorem, ipsum"
-
-//Assigning property to different variable
-var {foo:x, bar:y} = obj;
-console.log(`${x}, ${y}`); // "lorem, ipsum"
+console.log(`Multiple Return values: a=${a}, b=${b}, c=${c}`);
 
 
-//nested assignment
+// Destructuring objects
+var obj = { firstName: 'Jock', lastName: 'Jill' };
+var { firstName, lastName } = obj;
+console.log(`object destructing: ${firstName}, ${lastName} `); //  'Jock, Jill'
+
+// Assigning property to different variable
+var {firstName: fn, lastName: ln} = obj;
+console.log(`${fn}, ${ln}`); //  'Jock, Jill'
+
+
+// nested assignment
 var complicatedObj = {
-  arrayProp: [
-    "First",
-    { second: "Second" }
-  ]
+    arrayProp: ['First', { second: 'Second' }]
 };
 
 var { arrayProp: [first, { second }] } = complicatedObj;
-console.log(first+", "+second);
+console.log(first + ', ' + second);
 
-// get undefined when properties that are not defined
-var { missing } = {};
-console.log("missing= "+missing);
+//  get undefined when properties that are not defined
+var { missed } = {};
+console.log('missing= ' + missed);
 
-//We can provide default values when value is missing
-var [missing = true] = [];
-console.log("missing= "+missing);
+// We can provide default values when value is missing
+[missed = true] = [];
+console.log('missing= ' + missed);
 
-var { message: msg = "Something went wrong" } = {};
-console.log(msg); // "Something went wrong
+var { message: msg = 'Something went wrong' } = {};
+console.log(msg); //  'Something went wrong
 
-//destructing in parameters
+// destructing in parameters
 function userId({id}) {
-  return id;
+    return id;
 }
 
-function whois({displayName: displayName, fullName: {firstName: name}}){
-  console.log(displayName + " is " + name);
+function whois({displayName: displayName, fullName: {firstName: name}}) {
+    console.log(displayName + ' is ' + name);
 }
 
-var user = { 
-  id: 42, 
-  displayName: "jdoe",
-  fullName: { 
-      firstName: "John",
-      lastName: "Doe"
-  }
+var user = {
+    id: 42,
+    displayName: 'jdoe',
+    fullName: {
+        firstName: 'John',
+        lastName: 'Doe'
+    }
 };
 
-console.log("userId: " + userId(user)); // "userId: 42"
-whois(user); // "jdoe is John"
+console.log('userId: '  +  userId(user)); // 'userId: 42'
+whois(user); // 'jdoe is John'

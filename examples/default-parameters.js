@@ -1,11 +1,14 @@
+// Not supported in Chrome yet
+
 'use strict';
 var x = 10;
 
-function getParam(){
+function getParam() {
     return x++;
 }
 
-function defaultExample(a, b=2, c=a*3, d=getParam(), e=this) {
+function defaultExample(a, b = 2, c = a * 3, d = getParam(), e = this) {
+    // ES5, b = (b !== 'undefined') ? b: 2;
     console.log(`a=${a}, b=${b}, c=${c}, d=${d}, e=${e}`);
 }
 

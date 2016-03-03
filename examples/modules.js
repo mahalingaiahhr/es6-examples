@@ -1,6 +1,6 @@
 // example.js
-export var color = "red";
-export let name = "Nicholas";
+export var color = 'red';
+export let name = 'Nicholas';
 export const magicNumber = 7;
 
 // export function
@@ -30,44 +30,43 @@ function multiply(num1, num2) {
 export multiply;
 
 
-//main.js
+// main.js
 
-import { sum, multiply, magicNumber } from "example";
+import { sum, multiply, magicNumber } from './example';
 console.log(sum(1, magicNumber));   // 8
 console.log(multiply(1, 2));        // 2
 
-import * as example from "example"; //You can import all exports
+import * as example from 'example'; // You can import all exports
 console.log(example.sum(1, example.magicNumber));          // 8
 console.log(example.multiply(1, 2));    // 2
 
-//example.js, Renaming Exports and Imports
+// example.js, Renaming Exports and Imports
 
 export { sum as add };
 
-//Import will be used as
-import { add } from "example";
+// Import will be used as
+import { add } from './example';
 
-//We can rename imports too
-import { add as sum } from "example";
-console.log(typeof add);            // "undefined"
+// We can rename imports too
+import { add as sum } from './example';
+console.log(typeof add);            // 'undefined'
 console.log(sum(1, 2));             // 3
 
 
-//Default export and import
+// Default export and import
 
-//person.js
+// person.js
 export default class Person {
     constructor(fs, ls) {
         this.firstName = fs;
         this.lastName = ls;
     }
-	
-	getFullname() {
-		return this.firstName+" "+this.lastName
-	}
+    getFullname() {
+       return this.firstName + ' ' + this.lastName;
+    }
 }
 
-//main.js
-import Person from "person";
-var p = new Person("Jock", "Jill");
-console.log( p.getFullName()); //Jock Jill  
+// main.js
+import Person from './person';
+var p = new Person('Jock', 'Jill');
+console.log( p.getFullName());      // Jock Jill
